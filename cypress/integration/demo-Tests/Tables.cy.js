@@ -43,7 +43,7 @@ describe('Handle Tables', () => {
             })
     })
 
-    it.only('Pagination', () => {
+    it('Pagination', () => {
         let myText;
         let totalPages;
         cy.get(".col-sm-6.text-end").then((e) => {
@@ -59,32 +59,22 @@ describe('Handle Tables', () => {
 
                 cy.log('Active page is : ' + p)
 
-                if (p = 1) {
-                    cy.get("table[class='table table-bordered table-hover']>tbody>tr")
-                        .each(($row, index, $rows) => {
-                            cy.wrap($row).within(() => {
-                                cy.get("td").each(($col, index, $cols) => {
-                                    cy.log($col.text());
-                                })
+
+                cy.get("ul[class='pagination']>li:nth-child(" + p + ")").click()
+                cy.get("table[class='table table-bordered table-hover']>tbody>tr")
+                    .each(($row, index, $rows) => {
+                        cy.wrap($row).within(() => {
+                            cy.get("td").each(($col, index, $cols) => {
+                                cy.log($col.text());
                             })
                         })
+                    })
 
-                } else {
 
-                    cy.xpath("//a[text()='" + p + "']").click()
-                    cy.wait(5000)
-                    cy.get("table[class='table table-bordered table-hover']>tbody>tr")
-                        .each(($row, index, $rows) => {
-                            cy.wrap($row).within(() => {
-                                cy.get("td").each(($col, index, $cols) => {
-                                    cy.log($col.text());
-                                })
-                            })
-                        })
-                }
 
 
             }
         }
     })
+
 })

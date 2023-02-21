@@ -27,6 +27,7 @@
 /// <reference types="cypress" />
 /// <reference types="cypress-xpath" />
 ///<reference types="cypress-iframe" />
+///<reference types="@4tw/cypress-drag-drop" />
 
 Cypress.Commands.add('getiframe',(iframe)=>{
     return cy.get(iframe)
