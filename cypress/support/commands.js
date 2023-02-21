@@ -26,3 +26,20 @@
 
 /// <reference types="cypress" />
 /// <reference types="cypress-xpath" />
+///<reference types="cypress-iframe" />
+
+Cypress.Commands.add('getiframe',(iframe)=>{
+    return cy.get(iframe)
+    .its('0.contentDocument.body')
+    .should('be.visible')
+    .then(cy.wrap);
+})
+
+Cypress.Commands.add('tableData',(rowNumber, columnNumber)=>{
+    let getText ;
+    cy.get("table[class='table table-bordered table-hover']>tbody>tr:nth-child("+rowNumber+")>td:nth-child("+columnNumber+")")
+    .then(($value) => {
+        getText = $value.text()
+    })
+    return getText;
+})
