@@ -1,0 +1,12 @@
+jmeter recorder - use
+config managers - 
+
+variable use - 
+
+non UI -
+
+reports - 
+
+jmeter log - 
+
+ 

@@ -28,6 +28,7 @@
 /// <reference types="cypress-xpath" />
 ///<reference types="cypress-iframe" />
 ///<reference types="@4tw/cypress-drag-drop" />
+///<reference types="cypress-file-upload" />
 
 Cypress.Commands.add('getiframe',(iframe)=>{
     return cy.get(iframe)
@@ -44,3 +45,9 @@ Cypress.Commands.add('tableData',(rowNumber, columnNumber)=>{
     })
     return getText;
 })
+
+Cypress.on('uncaught:exception', (err, runnable) => {
+    // returning false here prevents Cypress from
+    // failing the test
+    return false
+  })

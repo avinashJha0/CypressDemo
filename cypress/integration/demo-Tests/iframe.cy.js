@@ -2,8 +2,7 @@ describe('Handle iframe',()=>{
 
     it('approach one',()=>{
         cy.visit('https://the-internet.herokuapp.com/iframe')
-        
-        
+          
         let iframe=cy.get('#mce_0_ifr')
         .its('0.contentDocument.body')
         .should('be.visible')
@@ -22,7 +21,7 @@ describe('Handle iframe',()=>{
         cy.get("[title='Bold']").click()
     })
 
-    it.only('approach three by using cypress-iframe plugin',()=>{
+    it('approach three by using cypress-iframe plugin',()=>{
         cy.visit('https://the-internet.herokuapp.com/iframe')
 
         cy.frameLoaded('#mce_0_ifr')
